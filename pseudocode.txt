@@ -1,0 +1,116 @@
+Requirements:
+
+### Must Have ###
+
+All restaurant data served from the backend API
+
+### Should Have ###
+
+Add the ability to enter an order for pickup
+Add foods with quantities
+Marking order as complete
+Track order by customer
+
+### Could Have ###
+
+Expanded order functionality
+Group order - label order items with “tag” or “name” of person in a group order  - example:  first person ordered ‘x, y, z’, second person ordered ‘a, b, c’
+Handle delivery in addition to pickup
+Add service charge to price
+Show address on map
+Customer can add delivery instructions
+Select spiciness level for each food
+Allow customer to make notes about each food item
+Customer Reviews
+
+### Wish List ###
+
+ETA for Delivery based on location/time of day.
+Driver’s Table so you can see who is delivering your order
+Ratings for driver(s)
+Customer can save multiple addresses (home/work) for delivery
+Some items only available for pickup || delivery || in person.
+
+### PSEUDOCODE ###
+
+1. i want to aim for Must have, 
+    to do this i need to connect my front and back end and display data, then find a way to migrate data over.
+    will probably have to set up models for the menu items, set up the views and urls
+    ill also need to link the server url to connect.
+    get the react to call my info
+    have the react display the info in the specified position in html.
+    as I go, think in terms of setting up for should have.
+        models might look like:
+            Customer
+                name
+            Dinner
+                name
+                price
+                description
+            Dessert
+                name
+                price
+                description
+            Appetizer
+                name
+                price
+                description
+
+2. i want to set up for pickup functionality, 
+    this looks like maybe adding a new tab to my react app,
+    setting up models with one to many : customer to order status (like in the bike app)
+    also many to many : food item to customer order status. (also bike app)
+    and feeding that table information back into the front end.
+
+    so set up a customer order model and maybe adjust the food and customer models.
+
+    so i need to be able to write customer data from the front end to the backend.
+
+
+### chatgpt thoughts. ###
+To connect your React-based frontend to a Django backend, you'll need to set up an API in Django that serves the data needed by your React components. Here's a general outline of the steps involved:
+
+Set Up Django Project:
+
+Install Django if you haven't already: pip install django.
+Create a new Django project: django-admin startproject myproject.
+Create a new Django app within your project: python manage.py startapp myapp.
+Define Models:
+
+Define your Django models in models.py. These models represent the data you want to store in your database.
+Set Up Serializers:
+
+Create serializers using Django Rest Framework (DRF) to convert Django model instances into JSON. Install DRF if you haven't already: pip install djangorestframework.
+Set Up Views:
+
+Define views that will handle API requests and responses. These views will use the serializers to serialize data from your models.
+Set Up URLs:
+
+Define URL patterns in urls.py to map URLs to your views.
+Implement CRUD Operations:
+
+Implement Create, Read, Update, and Delete operations in your views as needed.
+Test API Endpoints:
+
+Test your API endpoints using tools like Postman or by directly accessing them in the browser.
+Set Up React App:
+
+Make sure your React app is set up and running.
+Fetch Data from Django API:
+
+Use JavaScript's fetch API or libraries like Axios in your React components to fetch data from your Django API endpoints.
+Display Data in React Components:
+
+Once you fetch data from the Django backend, you can display it in your React components as needed.
+Handle User Interactions:
+
+Implement logic to handle user interactions in your React components, such as submitting forms or clicking buttons, and make corresponding API requests to your Django backend.
+Handle Authentication and Authorization:
+
+Implement authentication and authorization mechanisms if your application requires them. Django provides built-in authentication features, and you can use tokens or sessions for authentication between your React frontend and Django backend.
+Deployment:
+
+Deploy your Django backend and React frontend separately. You can deploy Django on platforms like Heroku, AWS, or DigitalOcean, and React apps can be deployed to services like Vercel, Netlify, or AWS Amplify.
+Remember to set up CORS (Cross-Origin Resource Sharing) headers in your Django backend to allow requests from your React frontend domain. You can use the django-cors-headers package for this purpose.
+
+This is a high-level overview, and each step may require additional configuration and customization based on your specific project requirements.
